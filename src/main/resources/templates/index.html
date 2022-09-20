@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>GSPNE</title>
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+</head>
+<body>
+	<nav class="navbar navbar-expand-lg navbar-light bg-secondary">
+		<a class="navbar-brand" href="/">GSPNE</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+			data-target="#navbarNav" aria-controls="navbarNav"
+			aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNav">
+			<ul class="navbar-nav">
+			</ul>
+		</div>
+		<button type="button" class="btn btn-success">Cerrar Sesion</button>
+	</nav>
+	<ul class="nav flex-column">
+  <li class="nav-item">
+    <a class="nav-link active" th:href="@{/roles}">Roles</a>
+  </li>
+ 
+  <li class="nav-item">
+    <a class="nav-link" th:href="@{/proveedores}">Proveedores</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" th:href="@{/proveedores/nuevo}">Crear Proveedor</a>
+  </li>
+  
+    <li class="nav-item">
+    <a class="nav-link" th:href="@{/categorias}">Categorias</a>
+  </li>
+   <li class="nav-item">
+    <a class="nav-link" th:href="@{/categorias/crear}">Crear Categorias</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" th:href="@{/producto/nuevo}">Crear Producto</a>
+  </li>
+  
+   <li class="nav-item">
+    <a class="nav-link" th:href="@{/productos}">lista de Productos</a>
+  </li>
+
+  
+</ul>
+	
+</body> 
+</html>
