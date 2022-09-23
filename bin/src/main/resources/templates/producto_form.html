@@ -1,4 +1,4 @@
-
+<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="utf-8">
@@ -25,19 +25,39 @@
 	
 	<div class="container text-center">
 	<div>
-		<h1 th:if="${categoria.id == null}">Crear Categoria</h1>
-		<h1 th:unless="${categoria.id == null}">Editar Categoria</h1>
+		<h1 th:if="${producto.id == null}">Crear Producto</h1>
+		<h1 th:unless="${producto.id == null}">Editar Producto</h1>
 	</div>
-	<form th:action="@{/categoria/guardar}" th:object="${categoria}" method="post" style="max-width:600px;margin:0 auto;">
-	<input type="hidden" th:field="*{id}" th:value="categoria.id"/>
+	<form th:action="@{/producto/guardar}" th:object="${producto}" method="post" style="max-width:600px;margin:0 auto;">
+	<input type="hidden" th:field="*{id}" th:value="producto.id"/>
 	<div class="m-3">
 	
 		<div class="form-group row">
-		<label class="col-form-lael col-sm-4">Nombre De la Categoria:</label>
+		<label class="col-form-lael col-sm-4">Nombre :</label>
 		<div class="col-sm-8">
 		<input type="text" th:field="*{nombre}" class="form-control" required/>
 		</div>
 		</div>
+		
+		<div class="form-group row">
+		<label class="col-form-lael col-sm-4">Valor :</label>
+		<div class="col-sm-8">
+		<input type="text" th:field="*{valor}" class="form-control" required/>
+		</div>
+		</div>
+		
+		<div class="form-group row">
+		<label class="col-form-label col-sm-4">Categoria :</label>
+		<div class="col-sm-8">
+		<select th:field="*{categoria}" class="form-control"required>
+		<th:block th:each="categoria : ${listaCategorias}">
+		<option th:text="${categoria.nombre}" th:value="${categoria.id}"></option>
+		</th:block>
+		</select>
+		</div>
+	</div>
+		
+		
 		
 		<div class="text-center p">
 		<button type="submit" class="btn btn-primary">Guardar</button>
@@ -47,6 +67,8 @@
 	</form>
 	
 	</div>
+	
+	
 	
 </body> 
 </html>

@@ -21,17 +21,15 @@
 			</ul>
 		</div>
 		<button type="button" class="btn btn-success">Cerrar Sesion</button>
-	</nav>
-	
+		</nav>
+		
 	<div class="container text-center">
 	<div>
-	
-	
-		<h1 th:if="${producto.id == null}">Crear Producto</h1>
-		<h1 th:unless="${producto.id == null}">Editar Producto</h1>
+		<h1 th:if="${proveedor.id == null}">Crear Proveedor</h1>
+		<h1 th:unless="${proveedor.id == null}">Editar Proveedor</h1>
 	</div>
-	<form th:action="@{/producto/guardar}" th:object="${producto}" method="post" style="max-width:600px;margin:0 auto;">
-	<input type="hidden" th:field="*{id}" th:value="producto.id"/>
+	<form th:action="@{/proveedor/guardar}" th:object="${proveedor}" method="post" style="max-width:600px;margin:0 auto;">
+	<input type="hidden" th:field="*{id}" th:value="proveedor.id"/>
 	<div class="m-3">
 	
 		<div class="form-group row">
@@ -42,23 +40,32 @@
 		</div>
 		
 		<div class="form-group row">
-		<label class="col-form-lael col-sm-4">Valor :</label>
+		<label class="col-form-lael col-sm-4">Apellido :</label>
 		<div class="col-sm-8">
-		<input type="text" th:field="*{valor}" class="form-control" required/>
+		<input type="text" th:field="*{apellido}" class="form-control" required/>
 		</div>
 		</div>
 		
 		<div class="form-group row">
-		<label class="col-form-label col-sm-4">Categoria :</label>
+		<label class="col-form-lael col-sm-4">Telefono :</label>
 		<div class="col-sm-8">
-		<select th:field="*{categoria}" class="form-control"required>
-		<th:block th:each="categoria : ${listaCategorias}">
-		<option th:text="${categoria.nombre}" th:value="${categoria.id}"></option>
-		</th:block>
-		</select>
+		<input type="text" th:field="*{telefono}" class="form-control" required/>
 		</div>
-	</div>
+		</div>
 		
+		<div class="form-group row">
+		<label class="col-form-lael col-sm-4">Email :</label>
+		<div class="col-sm-8">
+		<input type="text" th:field="*{email}" class="form-control" required/>
+		</div>
+		</div>
+		
+		<div class="form-group row">
+		<label class="col-form-lael col-sm-4">Estado :</label>
+		<div class="col-sm-8">
+		<input type="text" th:field="*{estado}" class="form-control" required/>
+		</div>
+		</div>
 		
 		
 		<div class="text-center p">
@@ -69,8 +76,6 @@
 	</form>
 	
 	</div>
-	
-	
 	
 </body> 
 </html>

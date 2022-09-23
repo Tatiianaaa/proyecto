@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.ejercicios.categorias.Categoria;
@@ -41,5 +42,13 @@ public class ProductoController {
 		modelo.addAttribute("listaProductos", listaProductos);
 		
 		return "productos";
+	}
+	@GetMapping("/producto/editar/{id}")
+	public String editarProducto(@PathVariable("id") Integer id,Model modelo) {
+		Producto producto = productoRepository.findById(id).get();
+		List<Categoria> listaCategorias = categoriaRepository.findAll();
+		modelo.addAttribute("listaCategorias", listaCategorias);
+		modelo.addAttribute("producto", producto);
+		return "producto_form";
 	}
 }
