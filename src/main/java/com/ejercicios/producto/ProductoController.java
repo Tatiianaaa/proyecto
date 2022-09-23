@@ -51,4 +51,10 @@ public class ProductoController {
 		modelo.addAttribute("producto", producto);
 		return "producto_form";
 	}
+	
+	@GetMapping("/producto/eliminar/{id}")
+	public String eliminarproducto(@PathVariable("id") Integer id,Model modelo) {
+		productoRepository.deleteById(id);
+		return "redirect:/productos";
+	}
 }
