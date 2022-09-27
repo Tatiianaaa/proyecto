@@ -29,7 +29,7 @@ public class ProductoController {
 		
 		modelo.addAttribute("listaCategorias", listaCategorias);
 		
-		return "producto_form";
+		return "producto/producto_form";
 	}
 	@PostMapping("/producto/guardar")
 	public String guardarProducto(Producto producto){
@@ -41,7 +41,7 @@ public class ProductoController {
 		List<Producto>  listaProductos = productoRepository.findAll();
 		modelo.addAttribute("listaProductos", listaProductos);
 		
-		return "productos";
+		return "producto/productos";
 	}
 	@GetMapping("/producto/editar/{id}")
 	public String editarProducto(@PathVariable("id") Integer id,Model modelo) {
@@ -49,7 +49,7 @@ public class ProductoController {
 		List<Categoria> listaCategorias = categoriaRepository.findAll();
 		modelo.addAttribute("listaCategorias", listaCategorias);
 		modelo.addAttribute("producto", producto);
-		return "producto_form";
+		return "producto/producto_form";
 	}
 	
 	@GetMapping("/producto/eliminar/{id}")

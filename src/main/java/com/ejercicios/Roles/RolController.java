@@ -19,13 +19,13 @@ public class RolController {
 	public String listarRoles(Model modelo) {
 		List<Rol> listaRoles = rolRepository.findAll();
 		modelo.addAttribute("listaRoles", listaRoles);
-		return "roles";
+		return "rol/roles";
 	}
 	
 	@GetMapping("/roles/nuevo")
 	public String mostrarFormularioDeCrearRol(Model modelo) {
 		modelo.addAttribute("rol", new Rol());
-		return "rol_form";
+		return "rol/rol_form";
 	}
 	@PostMapping("/rol/guardar")
 	public String guardarRol(Rol rol) {
@@ -36,7 +36,7 @@ public class RolController {
 	public String mostrarFormularioDeEditarRol(@PathVariable("id") Integer id,Model modelo) {
 		Rol rol = rolRepository.findById(id).get();
 		modelo.addAttribute("rol", rol);
-		return "rol_form";
+		return "rol/rol_form";
 	}
 	
 	@GetMapping("/rol/eliminar/{id}")

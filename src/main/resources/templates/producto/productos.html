@@ -9,7 +9,6 @@
 	crossorigin="anonymous">
 </head>
 <body>
-<!-- Hola -- >
 	<nav class="navbar navbar-expand-lg navbar-light bg-secondary">
 		<a class="navbar-brand" href="/">GSPNE</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -24,11 +23,18 @@
 		<button type="button" class="btn btn-success">Cerrar Sesion</button>
 	</nav>
 	
-    <a class="btn btn-dark" th:href="@{/roles/nuevo}" style="margin-top:10px;">Crear Rol</a>
-  
-	<div class="container text-center">
-	<div>
-		<h1>Lista de los roles</h1>
+	<div class="container">
+		<div class="row">
+		<h3>Lista de Productos</h3>
+		</div>
+	<br>
+	
+	<div class="row">
+				<div class="col-lg-6">
+					<a  th:href="@{/producto/nuevo}" class="btn btn-danger btn-sm mb3">Crear Producto</a>
+				</div>
+	</div>
+	
 	<br>
 	
 	<table class="table table-striped table-dark">
@@ -36,25 +42,28 @@
     <tr>
      <th>Id</th>
      <th>Nombre</th>
+     <th>Valor</th>
      <th>Estado</th>
+     <th>Fecha Vencimiento</th>
+     <th>Categoria</th>
      <th>Acciones</th>
     </tr>
   </thead>
   <tbody>
-    <tr th:each="rol : ${listaRoles}">
-      <td th:text="${rol.id}"></td>
-      <td th:text="${rol.nombre}"></td>
-      <td th:text="${rol.estado}"></td>
+    <tr th:each="producto : ${listaProductos}">
+      <td th:text="${producto.id}"></td>
+      <td th:text="${producto.nombre}"></td>
+       <td th:text="${producto.valor}"></td>
+       <td th:text="${producto.estado}"></td>
+       <td th:text="${producto.fechavencimiento}"></td>
+      <td th:text="${producto.categoria.nombre}"></td>
       <td>
-      <a th:href="@{'/rol/editar'+'/'+ ${rol.id}}" class="btn btn-info">Editar</a>
-      <a th:href="@{'/rol/eliminar'+'/'+ ${rol.id}}" class="btn btn-danger">Eliminar</a>
+      <a th:href="@{'/producto/editar'+'/'+ ${producto.id}}" class="btn btn-info">Editar</a>
+      <a th:href="@{'/producto/eliminar'+'/'+ ${producto.id}}" class="btn btn-danger">Eliminar</a>
       </td>
     </tr>
   </tbody>
 </table>
-	
-	
-	
 	</div>
 	
 	</div>

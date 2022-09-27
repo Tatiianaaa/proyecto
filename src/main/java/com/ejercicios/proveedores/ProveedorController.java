@@ -18,12 +18,12 @@ public class ProveedorController {
 	public String listarProveedores(Model modelo) {
 		List<Proveedor> listaProveedores = proveedorRepository.findAll();
 		modelo.addAttribute("listaProveedores", listaProveedores);
-		return "proveedores";
+		return "proveedor/proveedores";
 	}
 	@GetMapping("/proveedores/nuevo")
 	public String mostrarFormularioProveedor(Model modelo) {
 		modelo.addAttribute("proveedor", new Proveedor());
-		return "prove_form";
+		return "proveedor/prove_form";
 	}
 	
 	@PostMapping("/proveedor/guardar")
@@ -36,7 +36,7 @@ public class ProveedorController {
 	public String mostrarFormularioEditarProveedor(@PathVariable("id") Integer id,Model modelo) {
 		Proveedor proveedor = proveedorRepository.findById(id).get();
 		modelo.addAttribute("proveedor", proveedor);
-		return "prove_form";
+		return "proveedor/prove_form";
 	}
 	
 	@GetMapping("/proveedor/eliminar/{id}")

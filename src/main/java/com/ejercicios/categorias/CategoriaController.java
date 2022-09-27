@@ -19,12 +19,12 @@ public class CategoriaController {
 	public String listarCategorias(Model modelo){
 		List<Categoria> listaCategorias = categoriaRepository.findAll();
 		modelo.addAttribute("listaCategorias", listaCategorias);
-		return "categorias";
+		return "categoria/categorias";
 	}
 	@GetMapping("/categorias/crear")
 	public String mostrarFormCrearCategoria(Model modelo) {
 		modelo.addAttribute("categoria", new Categoria());
-		return "categoria_form";
+		return "categoria/categoria_form";
 	} 
 	
 	@PostMapping("/categoria/guardar")
@@ -37,7 +37,7 @@ public class CategoriaController {
 	public String editarCategoria(@PathVariable("id") Integer id,Model modelo) {
 		Categoria categoria = categoriaRepository.findById(id).get();
 		modelo.addAttribute("categoria", categoria);
-		return "categoria_form";
+		return "categoria/categoria_form";
 	}
 	@GetMapping("/categoria/eliminar/{id}")
 	public String eliminarCategoria(@PathVariable("id") Integer id,Model modelo) {
