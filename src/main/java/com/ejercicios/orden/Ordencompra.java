@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -20,6 +21,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.DateTimeFormat.ISO;
 
 import com.ejercicios.producto.Producto;
+import com.ejercicios.proveedores.Proveedor;
 
 @Entity
 @Table(name = "ordencompra")
@@ -45,7 +47,12 @@ public class Ordencompra {
 	@ManyToMany
 	@JoinTable(name = "orden_producto", joinColumns = @JoinColumn(name = "orden_id"), inverseJoinColumns = @JoinColumn(name = "producto_id"))
 	private Set<Producto> productos = new HashSet<>();
+	
+	@ManyToOne
+	@JoinColumn(name = "proveedor_id")
+	private Proveedor proveedor;
 
+	
 	public Integer getId() {
 		return id;
 	}
@@ -89,6 +96,14 @@ public class Ordencompra {
 	public Set<Producto> getProductos() {
 		return productos;
 	}
+	
+	public Proveedor getProveedor() {
+		return proveedor;
+	}
+
+	public void setProveedor(Proveedor proveedor) {
+		this.proveedor = proveedor;
+	}
 
 	public void setProductos(Set<Producto> productos) {
 		this.productos = productos;
@@ -117,4 +132,26 @@ public class Ordencompra {
 		this.productos = productos;
 	}
 
+	public Ordencompra(Integer id, int cantidad, int total, String estado, Date fechaentrada, Set<Producto> productos,
+			Proveedor proveedor) {
+		super();
+		this.id = id;
+		this.cantidad = cantidad;
+		this.total = total;
+		this.estado = estado;
+		this.fechaentrada = fechaentrada;
+		this.productos = productos;
+		this.proveedor = proveedor;
+	}
+
+	public Ordencompra(int cantidad, int total, String estado, Date fechaentrada, Set<Producto> productos,
+			Proveedor proveedor) {
+		super();
+		this.cantidad = cantidad;
+		this.total = total;
+		this.estado = estado;
+		this.fechaentrada = fechaentrada;
+		this.productos = productos;
+		this.proveedor = proveedor;
+	}
 }

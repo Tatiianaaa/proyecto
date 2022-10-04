@@ -146,6 +146,9 @@ public class Producto {
 		this.fechavencimiento = fechavencimiento;
 		this.categoria = categoria;
 	}
-	
+	@Override
+	public String toString() {
+		return nombre;
+	}
 	
 }
